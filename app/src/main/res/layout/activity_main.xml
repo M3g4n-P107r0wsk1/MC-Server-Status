@@ -9,20 +9,21 @@
 
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="1dp"
-        android:gravity="center">
+        tools:layout_editor_absoluteX="1dp">
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/find_the_server_s_status"
             android:textAlignment="center"
-            android:textSize="@dimen/h2"
-            android:text="@string/find_the_server_s_status" />
+            android:textSize="@dimen/h2" />
 
         <RadioGroup
             android:layout_width="200dp"
@@ -45,8 +46,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/editTextTextPersonName"
@@ -64,5 +65,17 @@
                 android:hint="@string/port"
                 android:inputType="number" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/h2"
+            android:text="@string/popular_servers" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

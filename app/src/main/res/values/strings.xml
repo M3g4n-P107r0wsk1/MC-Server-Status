@@ -1,13 +1,28 @@
 <resources>
-    <string name="app_name">MC Server Status</string>
+    <string name="app_name">Serverus Craftus</string>
     <string name="find_the_server_s_status">Find the Server\'s Status</string>
     <string name="java">Java</string>
     <string name="bedrock">Bedrock</string>
     <string name="server_ip">server ip</string>
     <string name="port">port</string>
     <string name="server_status">Server Status</string>
-    <string name="my_servers">My Servers</string>
-    <string name="help">Help</string>
+    <string name="popular_servers">Popular Servers</string>
     <string name="about">About</string>
+    <string name="fina_a_bug_report_it_here">Fina a bug? Report it here</string>
     <string name="bug_report">Bug Report</string>
+    <string name="description">Description</string>
+    <string name="title">Title</string>
+    <string name="report">Report</string>
+    <string name="add_to_my_servers">Add to My Servers</string>
+    <string name="players">Players</string>
+    <string name="motd">MOTD</string>
+    <string name="version">Version</string>
+    <string name="status">Status</string>
+    <string name="ip">IP</string>
+    <string name="help">Help</string>
+    <string name="sign_in">Sign in</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="my_servers">My Servers</string>
 </resources>
