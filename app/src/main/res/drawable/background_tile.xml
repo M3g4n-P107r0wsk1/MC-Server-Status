@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- thanks to Tony Lukasavage for explaining how to tile images as a background (http://tonylukasavage.com/blog/2011/06/01/android-quick-tip-tiling-a-background-image/)-->
+<bitmap
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@drawable/endstone"
+    android:tileMode="repeat"
+    />

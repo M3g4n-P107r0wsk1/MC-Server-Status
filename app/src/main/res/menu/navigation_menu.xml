@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="serverStatusMenuBar"
+        android:title="@string/server_status"
+        android:icon="@drawable/ic_baseline_network_check_24">
+    </item>
+    <item
+        android:id="myServersMenuBar"
+        android:title="@string/my_servers"
+        android:icon="@drawable/ic_baseline_bookmark_24">
+    </item>
+    <item
+        android:id="helpMenuBar"
+        android:title="@string/help"
+        android:icon="@drawable/ic_baseline_help_24">
+    </item>
+    <item
+        android:id="aboutMenuBar"
+        android:title="@string/about"
+        android:icon="@drawable/ic_baseline_info_24">
+    </item>
+    <item
+        android:id="bugReportMenuBar"
+        android:title="@string/bug_report"
+        android:icon="@drawable/ic_baseline_bug_report_24">
+    </item>
+    <item
+        android:id="signInMenuBar"
+        android:title="Signin"
+        android:icon="@drawable/ic_baseline_account_circle_24">
+    </item>
+</menu>

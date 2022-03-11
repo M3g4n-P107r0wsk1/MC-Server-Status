@@ -10,6 +10,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MCServerStatus">
         <activity
+            android:name=".SigninActivity"
+            android:exported="true" />
+        <activity
+            android:name=".HelpActivity"
+            android:exported="true" />
+        <activity
+            android:name=".BugReportActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AboutAppActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MyServersActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ServerStatusActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
