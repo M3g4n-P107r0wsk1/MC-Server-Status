@@ -18,52 +18,52 @@
         android:gravity="center_horizontal">
 
         <TextView
-            android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/h1"
             android:text="@string/bug_report" />
 
         <TextView
-            android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/fina_a_bug_report_it_here"
             android:textSize="@dimen/h2"/>
 
         <TextView
-            android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/h2"
             android:text="@string/title" />
 
         <EditText
-            android:id="@+id/editTextTextEmailAddress"
+            android:id="@+id/titleBugReport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text" />
 
         <TextView
-            android:id="@+id/textView10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/h2"
             android:text="@string/description" />
 
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/descriptionBugReport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="text" />
+            android:gravity="start|top"
+            android:inputType="textMultiLine" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/reportButtonBugReport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/report" />
+            android:text="@string/report"
+            android:backgroundTint="@color/secondaryColor"
+            android:textColor="@color/secondaryTextColor"/>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

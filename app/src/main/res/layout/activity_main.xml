@@ -11,11 +11,12 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="1dp">
+        tools:layout_editor_absoluteX="1dp"
+        android:background="@color/primaryLightColor">
 
         <TextView
             android:id="@+id/textView"
@@ -50,32 +51,44 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/serverIpEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/server_ip"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:background="@color/backgroundColor"/>
 
             <EditText
-                android:id="@+id/editTextNumber"
+                android:id="@+id/serverPortEditText"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/port"
-                android:inputType="number" />
+                android:inputType="number"
+                android:background="@color/backgroundColor"/>
+
+            <Button
+                android:id="@+id/findStatusButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Go"
+                android:backgroundTint="@color/secondaryColor"
+                android:textColor="@color/secondaryTextColor"/>
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/h2"
-            android:text="@string/popular_servers" />
+            android:text="@string/popular_servers"
+            android:background="@color/backgroundColor"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@color/backgroundColor"
+            />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

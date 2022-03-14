@@ -18,14 +18,12 @@
         android:gravity="center_horizontal">
 
         <TextView
-            android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sign_in"
             android:textSize="@dimen/h1"/>
 
         <TextView
-            android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/h2"
@@ -37,10 +35,10 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textEmailAddress"
-            android:hint="user@domain.com"/>
+            android:hint="user@domain.com"
+            />
 
         <TextView
-            android:id="@+id/textView10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/h2"
@@ -54,15 +52,19 @@
             android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/signInButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/sign_in" />
+            android:text="@string/sign_in"
+            android:backgroundTint="@color/secondaryColor"
+            android:textColor="@color/secondaryTextColor"/>
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/googleSignInButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/sign_in_with_google" />
+            android:text="@string/sign_in_with_google"
+            android:backgroundTint="@color/secondaryColor"
+            android:textColor="@color/secondaryTextColor"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
