@@ -12,11 +12,13 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/primaryDarkColor"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="1dp"
-        android:background="@color/primaryLightColor">
+        android:padding="@dimen/spacing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView"
@@ -24,6 +26,7 @@
             android:layout_height="wrap_content"
             android:text="@string/find_the_server_s_status"
             android:textAlignment="center"
+            android:textColor="@color/backgroundColor"
             android:textSize="@dimen/h2" />
 
         <RadioGroup
@@ -35,13 +38,17 @@
                 android:id="@+id/radioButton2"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="@string/java" />
+                android:buttonTint="@color/backgroundColor"
+                android:text="@string/java"
+                android:textColor="@color/backgroundColor" />
 
             <RadioButton
                 android:id="@+id/radioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/bedrock" />
+                android:buttonTint="@color/backgroundColor"
+                android:text="@string/bedrock"
+                android:textColor="@color/backgroundColor" />
         </RadioGroup>
 
         <LinearLayout
@@ -54,41 +61,51 @@
                 android:id="@+id/serverIpEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/spacing"
+                android:background="@color/backgroundColor"
                 android:ems="10"
                 android:hint="@string/server_ip"
-                android:inputType="textPersonName"
-                android:background="@color/backgroundColor"/>
+                android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/serverPortEditText"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/spacing"
+                android:background="@color/backgroundColor"
                 android:ems="10"
                 android:hint="@string/port"
-                android:inputType="number"
-                android:background="@color/backgroundColor"/>
+                android:inputType="number" />
 
             <Button
                 android:id="@+id/findStatusButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Go"
                 android:backgroundTint="@color/secondaryColor"
-                android:textColor="@color/secondaryTextColor"/>
+                android:text="Go"
+                android:textColor="@color/secondaryTextColor" />
         </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/h2"
-            android:text="@string/popular_servers"
-            android:background="@color/backgroundColor"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/backgroundColor"
-            />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/popularServers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing"
+        android:padding="@dimen/spacing"
+        android:text="@string/popular_servers"
+        android:textSize="@dimen/h2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/backgroundColor"
+        android:padding="@dimen/spacing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/popularServers" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

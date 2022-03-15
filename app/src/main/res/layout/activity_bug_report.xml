@@ -7,27 +7,39 @@
     android:background="@drawable/background_tile"
     tools:context=".BugReportActivity">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/bugReportTitle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bug_report"
+        android:textSize="@dimen/h1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center_horizontal">
+        android:background="@color/primaryDarkColor"
+        android:textColor="@color/backgroundColor"
+        android:textAlignment="center"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/h1"
-            android:text="@string/bug_report" />
+    <TextView
+        android:id="@+id/findBugTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fina_a_bug_report_it_here"
+        android:textSize="@dimen/h2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bugReportTitle"
+        android:layout_marginTop="@dimen/spacing"
+        />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fina_a_bug_report_it_here"
-            android:textSize="@dimen/h2"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@id/findBugTitle"
+        android:layout_marginTop="@dimen/spacing"
+        android:padding="@dimen/spacing">
 
         <TextView
             android:layout_width="match_parent"
@@ -51,7 +63,7 @@
         <EditText
             android:id="@+id/descriptionBugReport"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:ems="10"
             android:gravity="start|top"
             android:inputType="textMultiLine" />

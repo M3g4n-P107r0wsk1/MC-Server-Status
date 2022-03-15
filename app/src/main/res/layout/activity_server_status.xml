@@ -7,24 +7,31 @@
     android:background="@drawable/background_tile"
     tools:context=".ServerStatusActivity">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/serverStatusTitle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/h1"
+        android:text="Server Status"
         app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center_horizontal">
+        android:background="@color/primaryDarkColor"
+        android:textColor="@color/backgroundColor"
+        android:textAlignment="center"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/h1"
-            android:text="Server Status" />
+    <LinearLayout
+        android:id="@+id/serverStatusLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/serverStatusTitle"
+        android:padding="@dimen/spacing"
+        android:background="@color/backgroundColor">
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="400dp">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -33,8 +40,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/h2"
-                    android:text="@string/ip" />
+                    android:text="@string/ip"
+                    android:textSize="@dimen/h2" />
 
                 <TextView
                     android:id="@+id/ipTextView"
@@ -50,8 +57,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/h2"
-                    android:text="@string/status" />
+                    android:text="@string/status"
+                    android:textSize="@dimen/h2" />
 
                 <TextView
                     android:id="@+id/statusTextView"
@@ -67,8 +74,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@string/version"
                     android:textSize="@dimen/h2"
-                    android:text="@string/version" />
+                    android:layout_marginRight="@dimen/spacing"/>
 
                 <TextView
                     android:id="@+id/versionTextView"
@@ -84,8 +92,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/h2"
-                    android:text="@string/motd" />
+                    android:text="@string/motd"
+                    android:textSize="@dimen/h2" />
 
                 <TextView
                     android:id="@+id/motdTextView"
@@ -101,23 +109,40 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/h2"
-                    android:text="@string/players" />
+                    android:text="@string/players"
+                    android:textSize="@dimen/h2" />
 
                 <TextView
                     android:id="@+id/playerCountTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="1/ 20" />
+                    tools:text="2/ 20" />
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="@dimen/h2" />
+
+                <TextView
+                    android:id="@+id/playersOnline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    tools:text="IceySquidFox\nDuckbill37" />
             </TableRow>
         </TableLayout>
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/add_to_my_servers"
-            android:backgroundTint="@color/secondaryColor"
-            android:textColor="@color/secondaryTextColor"/>
     </LinearLayout>
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/secondaryColor"
+        android:text="@string/add_to_my_servers"
+        android:textColor="@color/secondaryTextColor"
+        android:layout_marginTop="@dimen/spacing"
+        app:layout_constraintTop_toBottomOf="@id/serverStatusLinearLayout"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

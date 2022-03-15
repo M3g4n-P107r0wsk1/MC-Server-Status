@@ -7,42 +7,50 @@
     android:background="@drawable/background_tile"
     tools:context=".SigninActivity">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/signInTitle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primaryDarkColor"
+        android:text="@string/sign_in"
+        android:textAlignment="center"
+        android:textColor="@color/backgroundColor"
+        android:textSize="@dimen/h1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center_horizontal">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/sign_in"
-            android:textSize="@dimen/h1"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signInTitle">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/h2"
-            android:text="@string/username" />
+            android:layout_marginTop="@dimen/spacing"
+            android:text="@string/username"
+            android:textSize="@dimen/h2" />
 
         <EditText
             android:id="@+id/editTextTextEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textEmailAddress"
             android:hint="user@domain.com"
-            />
+            android:inputType="textEmailAddress" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/h2"
-            android:text="@string/password" />
+            android:layout_marginTop="@dimen/spacing"
+            android:text="@string/password"
+            android:textSize="@dimen/h2" />
 
         <EditText
             android:id="@+id/editTextTextPassword"
@@ -55,16 +63,16 @@
             android:id="@+id/signInButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/sign_in"
             android:backgroundTint="@color/secondaryColor"
-            android:textColor="@color/secondaryTextColor"/>
+            android:text="@string/sign_in"
+            android:textColor="@color/secondaryTextColor" />
 
         <Button
             android:id="@+id/googleSignInButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/sign_in_with_google"
             android:backgroundTint="@color/secondaryColor"
-            android:textColor="@color/secondaryTextColor"/>
+            android:text="@string/sign_in_with_google"
+            android:textColor="@color/secondaryTextColor" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
