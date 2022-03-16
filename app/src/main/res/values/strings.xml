@@ -25,4 +25,7 @@
     <string name="password">Password</string>
     <string name="sign_in_with_google">Sign in with Google</string>
     <string name="my_servers">My Servers</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="username_hint">user@domain.com</string>
 </resources>

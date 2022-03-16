@@ -1,111 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_tile"
-    tools:context=".MainActivity">
+    android:id="@+id/mainActivityDrawer">
 
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primaryDarkColor"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:padding="@dimen/spacing"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/find_the_server_s_status"
-            android:textAlignment="center"
-            android:textColor="@color/backgroundColor"
-            android:textSize="@dimen/h2" />
-
-        <RadioGroup
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/radioButton2"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/backgroundColor"
-                android:text="@string/java"
-                android:textColor="@color/backgroundColor" />
-
-            <RadioButton
-                android:id="@+id/radioButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/backgroundColor"
-                android:text="@string/bedrock"
-                android:textColor="@color/backgroundColor" />
-        </RadioGroup>
+        android:layout_height="match_parent"
+        android:background="@drawable/background_tile"
+        android:gravity="center"
+        tools:context=".MainActivity">
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:background="@color/primaryDarkColor"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <EditText
-                android:id="@+id/serverIpEditText"
+            <TextView
+                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/spacing"
-                android:background="@color/backgroundColor"
-                android:ems="10"
-                android:hint="@string/server_ip"
-                android:inputType="textPersonName" />
+                android:text="@string/find_the_server_s_status"
+                android:textAlignment="center"
+                android:textColor="@color/backgroundColor"
+                android:textSize="@dimen/h2" />
 
-            <EditText
-                android:id="@+id/serverPortEditText"
-                android:layout_width="100dp"
+            <RadioGroup
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/spacing"
-                android:background="@color/backgroundColor"
-                android:ems="10"
-                android:hint="@string/port"
-                android:inputType="number" />
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/findStatusButton"
-                android:layout_width="wrap_content"
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/backgroundColor"
+                    android:text="@string/java"
+                    android:textColor="@color/backgroundColor" />
+
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/backgroundColor"
+                    android:text="@string/bedrock"
+                    android:textColor="@color/backgroundColor" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/secondaryColor"
-                android:text="Go"
-                android:textColor="@color/secondaryTextColor" />
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/serverIpEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/spacing"
+                    android:background="@color/backgroundColor"
+                    android:ems="10"
+                    android:hint="@string/server_ip"
+                    android:inputType="textPersonName" />
+
+                <EditText
+                    android:id="@+id/serverPortEditText"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/spacing"
+                    android:background="@color/backgroundColor"
+                    android:ems="10"
+                    android:hint="@string/port"
+                    android:inputType="number" />
+
+                <Button
+                    android:id="@+id/findStatusButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/secondaryColor"
+                    android:text="Go"
+                    android:textColor="@color/secondaryTextColor" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-    <TextView
-        android:id="@+id/popularServers"
+        <TextView
+            android:id="@+id/popularServers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing"
+            android:padding="@dimen/spacing"
+            android:text="@string/popular_servers"
+            android:textSize="@dimen/h2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/backgroundColor"
+            android:padding="@dimen/spacing"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/popularServers" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- navigation menu -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/mainNavView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing"
-        android:padding="@dimen/spacing"
-        android:text="@string/popular_servers"
-        android:textSize="@dimen/h2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+        android:layout_height="match_parent"
+        app:headerLayout="@layout/menu_header"
+        app:menu="@menu/navigation_menu"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        android:background="@color/secondaryLightColor" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/backgroundColor"
-        android:padding="@dimen/spacing"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/popularServers" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
