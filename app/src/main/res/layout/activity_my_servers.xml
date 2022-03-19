@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/background_tile"
         android:gravity="center"
-        tools:context=".MyServersActivity">
+        tools:context=".ui.MyServersActivity">
 
         <TextView
             android:id="@+id/myServersTextView"

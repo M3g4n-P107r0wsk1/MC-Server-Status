@@ -1,4 +1,4 @@
-package com.lh1153866.mcserverstatus
+package com.lh1153866.mcserverstatus.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,21 +7,25 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
-import com.lh1153866.mcserverstatus.databinding.ActivityAboutAppBinding
+import com.lh1153866.mcserverstatus.R
+import com.lh1153866.mcserverstatus.databinding.ActivityHelpBinding
 
-class AboutAppActivity : AppCompatActivity() {
+class HelpActivity : AppCompatActivity() {
 
     lateinit var toggle : ActionBarDrawerToggle
-    private lateinit var binding : ActivityAboutAppBinding
+    private lateinit var binding : ActivityHelpBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAboutAppBinding.inflate(layoutInflater)
+        binding = ActivityHelpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        /* Navigation Drawer courtesy of FoxAndroid (https://www.youtube.com/watch?v=zQh-QGGKPw0) */
-        val drawerLayout : DrawerLayout = binding.aboutDrawer // container for the drawer and main content
-        val navView : NavigationView = binding.aboutNavView // navigation menu in the activity
+        /* **************************************************************************************************************
+                                                        Navigation Drawer
+            Thanks to FoxAndroid for explaining how navigation drawers work (https://www.youtube.com/watch?v=zQh-QGGKPw0)
+           ************************************************************************************************************** */
+        val drawerLayout : DrawerLayout = binding.helpDrawer // container for the drawer and main content
+        val navView : NavigationView = binding.helpNavView // navigation menu in the activity
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)

@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/background_tile"
         android:gravity="center"
-        tools:context=".BugReportActivity">
+        tools:context=".ui.BugReportActivity">
 
         <TextView
             android:id="@+id/bugReportTitle"

@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/background_tile"
         android:gravity="center"
-        tools:context=".MainActivity">
+        tools:context=".ui.MainActivity">
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -40,20 +40,21 @@
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/radioButton2"
+                    android:id="@+id/javaRadioButton"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/backgroundColor"
+                    android:textColor="@color/backgroundColor"
                     android:text="@string/java"
-                    android:textColor="@color/backgroundColor" />
+                    android:checked="true"/>
 
                 <RadioButton
-                    android:id="@+id/radioButton"
+                    android:id="@+id/bedrockRadioButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/backgroundColor"
-                    android:text="@string/bedrock"
-                    android:textColor="@color/backgroundColor" />
+                    android:textColor="@color/backgroundColor"
+                    android:text="@string/bedrock"/>
             </RadioGroup>
 
             <LinearLayout
@@ -80,15 +81,16 @@
                     android:background="@color/backgroundColor"
                     android:ems="10"
                     android:hint="@string/port"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/findStatusButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/secondaryColor"
-                    android:text="Go"
-                    android:textColor="@color/secondaryTextColor" />
+                    android:textColor="@color/secondaryTextColor"
+                    android:text="Go" />
             </LinearLayout>
         </LinearLayout>
 
