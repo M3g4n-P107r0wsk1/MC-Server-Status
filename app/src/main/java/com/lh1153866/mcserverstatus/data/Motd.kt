@@ -9,7 +9,7 @@ data class Motd (
         var motd : String = ""
         if (!clean.isNullOrEmpty()) {
             for (line in clean!!) {
-                motd += "$line "
+                motd += line.trim() + "\n"
             }
         }
 

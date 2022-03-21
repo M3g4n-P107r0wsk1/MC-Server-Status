@@ -37,7 +37,7 @@
 
             <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="400dp">
+                android:layout_height="wrap_content">
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -46,6 +46,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:text="@string/ip"
                         android:textSize="@dimen/h2" />
 
@@ -53,29 +54,38 @@
                         android:id="@+id/ipTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="@dimen/h3"
                         tools:text="play.test.com : 65525" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/spacing">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:text="@string/status"
-                        android:textSize="@dimen/h2" />
+                        android:textSize="@dimen/h2"
+                        android:layout_marginEnd="@dimen/spacing"/>
 
                     <TextView
                         android:id="@+id/statusTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="@dimen/h3"
                         tools:text="online" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/spacing"
+                    android:id="@+id/versionTableRow">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -88,12 +98,17 @@
                         android:id="@+id/versionTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="@dimen/h3"
                         tools:text="1.18.0, 1.18.1, 1.18.2" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/spacing"
+                    android:id="@+id/motdTableRow">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -105,16 +120,22 @@
                         android:id="@+id/motdTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="@dimen/h3"
                         tools:text="A Minecraft Server" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/spacing"
+                    android:id="@+id/playersTableRow">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:text="@string/players"
                         android:textSize="@dimen/h2" />
 
@@ -122,23 +143,36 @@
                         android:id="@+id/playerCountTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="@dimen/h3"
                         tools:text="2/ 20" />
                 </TableRow>
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:minHeight="80dp"
+                    android:id="@+id/playerListTableRow">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
                         android:text=""
                         android:textSize="@dimen/h2" />
 
-                    <TextView
-                        android:id="@+id/playersOnline"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        tools:text="IceySquidFox\nDuckbill37" />
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/playersOnline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:textSize="@dimen/h3"
+                            android:lineSpacingExtra="5dp"
+                            tools:text="IceySquidFox\nDuckbill37" />
+                    </ScrollView>
                 </TableRow>
             </TableLayout>
         </LinearLayout>

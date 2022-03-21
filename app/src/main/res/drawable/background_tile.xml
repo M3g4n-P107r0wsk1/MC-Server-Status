@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!-- thanks to Tony Lukasavage for explaining how to tile images as a background (http://tonylukasavage.com/blog/2011/06/01/android-quick-tip-tiling-a-background-image/)-->
+<!-- FYI: the endstone.png file used in this tile background does not shrink in size when trying to convert to webp, thus it is left as a png file -->
 <bitmap
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:src="@drawable/endstone"
