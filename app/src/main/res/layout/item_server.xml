@@ -18,14 +18,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="play.deathorglorysmp.tk"
-            android:layout_marginRight="@dimen/spacing"/>
+            android:layout_marginEnd="@dimen/spacing"/>
 
         <TextView
             android:id="@+id/serverEditionTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="Java"
-            android:layout_marginRight="@dimen/spacing"/>
+            android:layout_marginEnd="@dimen/spacing"/>
 
         <Button
             android:id="@+id/checkStatusButton"

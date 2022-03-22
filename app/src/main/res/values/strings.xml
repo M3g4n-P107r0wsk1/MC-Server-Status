@@ -31,4 +31,11 @@
     <string name="check_status">Check Status</string>
     <string name="starting_tips">Starting Tips</string>
     <string name="things_to_keep_in_mind">Things to keep in Mind</string>
+    <string name="hypixel_ip">Hypixel</string>
+    <string name="java_mineplex_ip">Mineplex (java)</string>
+    <string name="uncensored_library_ip">The Uncensored Library</string>
+    <string name="bedrock_mineplex_ip">Mineplex (bedrock)</string>
+    <string name="the_hive_ip">The Hive</string>
+    <string name="lifeboat_ip">LifeBoat</string>
+    <string name="go">Go</string>
 </resources>

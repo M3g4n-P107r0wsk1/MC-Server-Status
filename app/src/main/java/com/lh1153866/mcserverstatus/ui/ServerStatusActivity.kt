@@ -16,7 +16,7 @@ import com.android.volley.toolbox.Volley
 import com.google.android.material.navigation.NavigationView
 import com.google.gson.Gson
 import com.lh1153866.mcserverstatus.R
-import com.lh1153866.mcserverstatus.data.Server
+import com.lh1153866.mcserverstatus.models.Server
 import com.lh1153866.mcserverstatus.databinding.ActivityServerStatusBinding
 
 class ServerStatusActivity : AppCompatActivity() {

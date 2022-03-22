@@ -1,4 +1,4 @@
-package com.lh1153866.mcserverstatus.data
+package com.lh1153866.mcserverstatus.models
 
 data class Motd (
     var clean : ArrayList<String>?= null // message of the day can have more than one line

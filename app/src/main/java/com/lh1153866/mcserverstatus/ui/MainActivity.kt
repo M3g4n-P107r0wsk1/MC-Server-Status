@@ -3,6 +3,7 @@ package com.lh1153866.mcserverstatus.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -20,6 +21,8 @@ class MainActivity : AppCompatActivity() {
     var port : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val intent = Intent(this, ServerStatusActivity::class.java)
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -84,35 +87,75 @@ class MainActivity : AppCompatActivity() {
             ip =  binding.serverIpEditText.text.toString().trim()
             port = binding.serverPortEditText.text.toString().trim()
 
-//            Toast.makeText(this, "clicked status button", Toast.LENGTH_LONG).show()
-            var intent = Intent(this, ServerStatusActivity::class.java)
-//
             if (binding.javaRadioButton.isChecked) { // java edition servers only need ip
-//                Toast.makeText(this, "java", Toast.LENGTH_LONG).show()
                 if (ip.isNotEmpty()) {
-                    intent.putExtra("edition", "Java") // pass the "java" edition to the server status screen
-                    intent.putExtra("ip", ip) // pass the entered ip to the server status screen
-
-                    startActivity(intent) // open server status activity
+                    startServerStatusActivity(ip, intent) // call activity changer
                 }
                 else {
                     Toast.makeText(this, "ip is required", Toast.LENGTH_LONG).show()
                 }
             }
             else if (binding.bedrockRadioButton.isChecked) { // bedrock edition servers need ip and port
-//                Toast.makeText(this, "bedrock", Toast.LENGTH_LONG).show()
                 if (ip.isNotEmpty() && port.isNotEmpty()) {
-                    intent.putExtra("edition", "Bedrock") // pass the "bedrock" edition to the server status screen
-                    intent.putExtra("ip", ip) // pass the entered ip to the server status screen
-                    intent.putExtra("port", port) // pass the entered port to the server status screen
-
-                    startActivity(intent) // open server status activity
+                    startServerStatusActivity(ip, port, intent) // call activity changer
                 }
                 else { // show error message if ip and port are not entered
                     Toast.makeText(this, "ip and port are required", Toast.LENGTH_LONG).show()
                 }
             }
         }
+
+        /* **************************************************************************************************************
+                                                       Popular Servers Buttons
+           ************************************************************************************************************** */
+        // java servers
+        binding.hypixelButton.setOnClickListener{ // Hypixel
+            startServerStatusActivity("mc.hypixel.net", intent) // call activity changer
+            Log.d("Call", "start server called")
+        }
+        binding.javaMineplexButton.setOnClickListener{ // Java Mineplex
+            startServerStatusActivity("us.mineplex.com", intent) // call activity changer
+        }
+        binding.uncensoredLibraryButton.setOnClickListener{ // The Uncensored Library
+            startServerStatusActivity("visit.uncensoredlibrary.com", intent) // call activity changer
+        }
+
+        // bedrock servers
+        binding.theHiveButton.setOnClickListener{ // The Hive
+            //geo.hivebedrock.network/ ca.hivebedrock.network
+            startServerStatusActivity("geo.hivebedrock.network", "19132", intent) // call activity changer
+        }
+        binding.bedrockMineplexButton.setOnClickListener{ // Bedrock Mineplex
+            startServerStatusActivity("mco.mineplex.com", "19132", intent) // call activity changer
+        }
+        binding.lifeboatButton.setOnClickListener{ // Lifeboat
+            startServerStatusActivity("mco.lbsg.net", "19132", intent) // call activity changer
+        }
+    }
+
+    /**
+     * Starts the "Server Status" activity for Java edition servers
+     * @param ip the ip used to access the server
+     */
+    private fun startServerStatusActivity(ip: String, intent: Intent) { // for java servers
+        Log.d("Call", "start server inside called")
+        intent.putExtra("edition", "Java") // pass the "java" edition to the server status screen
+        intent.putExtra("ip", ip) // pass the entered ip to the server status screen
+
+        startActivity(intent) // open server status activity
+    }
+
+    /**
+     * Starts the "Server Status" activity for Bedrock edition servers
+     * @param ip the ip used to access the server
+     * @param port the port used with the ip to access the server
+     */
+    private fun startServerStatusActivity(ip: String, port: String, intent: Intent) { // for bedrock servers
+        intent.putExtra("edition", "Bedrock") // pass the "java" edition to the server status screen
+        intent.putExtra("ip", ip) // pass the entered ip to the server status screen
+        intent.putExtra("port", port) // pass the entered port to the server status screen
+
+        startActivity(intent) // open server status activity
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

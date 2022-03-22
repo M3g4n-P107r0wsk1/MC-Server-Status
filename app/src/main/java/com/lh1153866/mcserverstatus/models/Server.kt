@@ -1,4 +1,4 @@
-package com.lh1153866.mcserverstatus.data
+package com.lh1153866.mcserverstatus.models
 
 data class Server (
     var id : String? = null,
