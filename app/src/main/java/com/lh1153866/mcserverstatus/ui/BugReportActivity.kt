@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.text.HtmlCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.lh1153866.mcserverstatus.R
@@ -62,8 +63,18 @@ class BugReportActivity : AppCompatActivity() {
 
                 else -> {true}
             }
-
         }
+
+
+        /* **************************************************************************************************************
+                                                     Bug Reporting Guidelines
+           ************************************************************************************************************** */
+        val bugReportGuide = "<a href=\"#\">Bug Report Website (WIP)</a> Here are some steps to follow if you are new to writing bug reports"
+        val bugReportGuide2 = "<ul><li><b>Title</b>: briefly specify the problem that you faced</li><li><b>Environment</b>: ask yourself the following question \"what kind of device am I using the app on, and what operating system version is the device running?\"</li><li><b>Description</b>: give a brief explanation of what the bug does or what is it affecting</li><li><b>Steps to reproduce a Bug</b>: explain the steps leading up to when you experienced the bug or how to make the bug happen again</li><li><b>Expected Result</b>: what you expected to happen when you followed the above steps</li><li><b>Actual Result</b>: what actually happened when you followed the above steps</li><li><b>Visual Proof of Bug</b>: if you have any screenshots, videos, or text related to the bug include them with your report</li></ul>"
+
+        binding.goodBugReportsTextView.text = HtmlCompat.fromHtml(bugReportGuide, HtmlCompat.FROM_HTML_MODE_LEGACY)
+        binding.goodBugReportsTextView2.text = HtmlCompat.fromHtml(bugReportGuide2, HtmlCompat.FROM_HTML_MODE_LEGACY)
+
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)) {

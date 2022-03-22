@@ -8,10 +8,10 @@
     <string name="server_status">Server Status</string>
     <string name="popular_servers">Popular Servers</string>
     <string name="about">About</string>
-    <string name="fina_a_bug_report_it_here">Fina a bug? Report it here</string>
+    <string name="fina_a_bug_report_it_here">Fina a bug? Report it on our bug tracker website</string>
     <string name="bug_report">Bug Report</string>
     <string name="description">Description</string>
-    <string name="title">Title</string>
+    <string name="title">Writing a good bug report</string>
     <string name="report">Report</string>
     <string name="add_to_my_servers">Add to My Servers</string>
     <string name="players">Players</string>
@@ -29,4 +29,6 @@
     <string name="close">Close</string>
     <string name="username_hint">user@domain.com</string>
     <string name="check_status">Check Status</string>
+    <string name="starting_tips">Starting Tips</string>
+    <string name="things_to_keep_in_mind">Things to keep in Mind</string>
 </resources>

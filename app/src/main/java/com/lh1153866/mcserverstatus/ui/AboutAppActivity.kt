@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.text.HtmlCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.lh1153866.mcserverstatus.R
@@ -62,8 +63,14 @@ class AboutAppActivity : AppCompatActivity() {
 
                 else -> {true}
             }
-
         }
+
+        /* **************************************************************************************************************
+                                                     About App
+           ************************************************************************************************************** */
+        val bugReportGuide = "<p>This app is created to find the online status of both Java and Bedrock Minecraft servers. Please keep in mind that to use this app, you need to have a stable internet or wifi connection.</p><p><b>Version:</b> 1.0.0</p><p><b>Developer & Artist:</b> IceySquidFox<p> <p><b>Special Thanks:</b> to my teacher, friends, and family for all the help and support</p> <p>Server Craftus by IceySquidFox Copyright ©2022</p>"
+
+        binding.aboutAppTextView.text = HtmlCompat.fromHtml(bugReportGuide, HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)) {

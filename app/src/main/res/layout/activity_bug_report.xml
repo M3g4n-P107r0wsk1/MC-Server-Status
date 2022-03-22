@@ -2,97 +2,97 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bugReportDrawer"
+    android:background="@drawable/background_tile"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/bugReportDrawer">
+    android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/background_tile"
-        android:gravity="center"
-        tools:context=".ui.BugReportActivity">
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/findBugTitle">
 
-        <TextView
-            android:id="@+id/bugReportTitle"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/bug_report"
-            android:textSize="@dimen/h1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@color/primaryDarkColor"
-            android:textColor="@color/backgroundColor"
-            android:textAlignment="center"/>
 
-        <TextView
-            android:id="@+id/findBugTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fina_a_bug_report_it_here"
-            android:textSize="@dimen/h2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/bugReportTitle"
-            android:layout_marginTop="@dimen/spacing"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            app:layout_constraintTop_toBottomOf="@id/findBugTitle"
-            android:layout_marginTop="@dimen/spacing"
-            android:padding="@dimen/spacing">
+            android:gravity="center"
+            tools:context=".ui.BugReportActivity">
 
             <TextView
+                android:id="@+id/bugReportTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/h2"
-                android:text="@string/title" />
-
-            <EditText
-                android:id="@+id/titleBugReport"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text" />
+                android:background="@color/primaryDarkColor"
+                android:text="@string/bug_report"
+                android:textAlignment="center"
+                android:textColor="@color/backgroundColor"
+                android:textSize="@dimen/h1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/findBugTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/backgroundColor"
+                android:text="@string/fina_a_bug_report_it_here"
+                android:textAlignment="center"
                 android:textSize="@dimen/h2"
-                android:text="@string/description" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/bugReportTitle" />
 
-            <EditText
-                android:id="@+id/descriptionBugReport"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:inputType="textMultiLine" />
-
-            <Button
-                android:id="@+id/reportButtonBugReport"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/report"
-                android:backgroundTint="@color/secondaryColor"
-                android:textColor="@color/secondaryTextColor"/>
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing"
+                app:layout_constraintTop_toBottomOf="@id/findBugTitle">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:background="@color/backgroundColor"
+                    android:padding="@dimen/spacing"
+                    android:text="@string/title"
+                    android:textColor="@color/primaryDarkColor"
+                    android:textSize="@dimen/h2" />
+
+                <TextView
+                    android:id="@+id/goodBugReportsTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/backgroundColor"
+                    android:ellipsize="none"
+                    android:padding="@dimen/spacing"
+                    android:textSize="@dimen/h3" />
+
+                <TextView
+                    android:id="@+id/goodBugReportsTextView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/backgroundColor"
+                    android:ellipsize="none"
+                    android:padding="@dimen/spacing"
+                    android:textSize="@dimen/h3" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <!-- navigation menu -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/bugReportNavView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:headerLayout="@layout/menu_header"
-        app:menu="@menu/navigation_menu"
         android:layout_gravity="start"
+        android:background="@color/secondaryLightColor"
         android:fitsSystemWindows="true"
-        android:background="@color/secondaryLightColor" />
+        app:headerLayout="@layout/menu_header"
+        app:menu="@menu/navigation_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

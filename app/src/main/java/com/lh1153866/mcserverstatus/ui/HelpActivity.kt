@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.text.HtmlCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.lh1153866.mcserverstatus.R
@@ -62,8 +63,16 @@ class HelpActivity : AppCompatActivity() {
 
                 else -> {true}
             }
-
         }
+
+        /* **************************************************************************************************************
+                                                     App Help/ Tips
+           ************************************************************************************************************** */
+        val startingTips = "<p>To use the app, first you need to go to the Server Status home page. From there you chose which version of Minecraft that the server is on, either \"Java\" for Minecraft java edition, or \"Bedrock\" for any other version of Minecraft. Once you have chose a version, simply put in the server's ip (and port if you are looking up a bedrock server) and press \"Go\" to find the status.</p> <p>If you would like to save a server to look up the status later, please create an account and click \"Add to My Servers\". Once you do this, you can go to \"My Servers\" when you are logged in and you will see any servers that you have saved</p>"
+        val keepInMind = "<p>These are a few things to be mindful of when using the app. Please do not contact the developer about these things, as they are already working on fixes for them, or are minor enough to be ignored.</p> <ul><li>A stable internet or wifi connection is required to use this app</li><li>Information will not load immediately and will take a few seconds to load</li><li>Server lookup information will only change once every <b>10 minutes</b> (this is so that the app and server can keep up with all the other people who also want to check server statuses)</li><li>Currently the bug report is in beta and is not going to be linked until it has been finished, please hang tight until it is done!</li></ul>"
+
+        binding.startingTipsTextView.text = HtmlCompat.fromHtml(startingTips, HtmlCompat.FROM_HTML_MODE_LEGACY)
+        binding.keepInMindTextView.text = HtmlCompat.fromHtml(keepInMind, HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)) {
