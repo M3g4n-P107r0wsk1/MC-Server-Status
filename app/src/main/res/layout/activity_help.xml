@@ -25,6 +25,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:paddingBottom="@dimen/spacing"
             android:background="@color/primaryDarkColor"
             android:textColor="@color/backgroundColor"
             android:textAlignment="center"/>
@@ -41,10 +42,12 @@
             app:layout_constraintTop_toBottomOf="@id/helpTitle">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/backgroundColor"
+                android:padding="@dimen/spacing"
                 android:text="@string/starting_tips"
+                android:textStyle="bold"
                 android:textSize="@dimen/h2" />
 
             <TextView
@@ -67,10 +70,12 @@
             app:layout_constraintTop_toBottomOf="@id/startingTipsLinearLayout">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="@dimen/spacing"
                 android:background="@color/backgroundColor"
                 android:text="@string/things_to_keep_in_mind"
+                android:textStyle="bold"
                 android:textSize="@dimen/h2" />
 
             <TextView

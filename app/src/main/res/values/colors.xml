@@ -17,6 +17,7 @@
     <color name="primaryTextColor">#ffffff</color>
     <color name="secondaryTextColor">#000000</color>
     <color name="backgroundColor">#EBEFB7</color>
+    <color name="backgroundColor_dark">#c3bd89</color>
     <color name="online">#DD17DD</color>
     <color name="offline">#6A3473</color>
 

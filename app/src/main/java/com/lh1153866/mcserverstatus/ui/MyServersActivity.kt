@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
+import com.firebase.ui.auth.AuthUI
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -48,6 +49,16 @@ class MyServersActivity : AppCompatActivity(), ServerAdapter.ServerItemListener 
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        // check if the user is signed in or not and show respective sign in/ out option
+        if (auth.currentUser == null) { // if the user is not signed in
+            navView.menu.getItem(6).isVisible = false // sign out is hidden
+            navView.menu.getItem(5).isVisible = true // sign in is shown
+        }
+        else { // if the user is signed in
+            navView.menu.getItem(5).isVisible = false // sign in is hidden
+            navView.menu.getItem(6).isVisible = true // sign out is shown
+        }
+
         navView.setNavigationItemSelectedListener { menuItem ->
             when(menuItem.itemId) { // check which menu item was selected and open activity
                 R.id.serverStatusMenuBar -> {
@@ -72,6 +83,14 @@ class MyServersActivity : AppCompatActivity(), ServerAdapter.ServerItemListener 
                 }
                 R.id.signInMenuBar -> {
                     startActivity(Intent(this, SignInActivity::class.java))
+                    true
+                }
+                R.id.signOutMenuBar -> {
+                    AuthUI.getInstance().signOut(this).addOnSuccessListener {
+                        Toast.makeText(this,"Successfully signed out", Toast.LENGTH_LONG).show()
+                    }
+                    startActivity(Intent(this, this::class.java))
+                    finish()
                     true
                 }
 

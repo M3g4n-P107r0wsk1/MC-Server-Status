@@ -26,6 +26,7 @@
                 android:textAlignment="center"
                 android:textColor="@color/backgroundColor"
                 android:textSize="@dimen/h1"
+                android:paddingBottom="@dimen/spacing"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

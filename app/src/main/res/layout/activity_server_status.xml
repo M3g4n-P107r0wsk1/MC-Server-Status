@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/h1"
             android:text="@string/server_status"
+            android:paddingBottom="@dimen/spacing"
             app:layout_constraintTop_toTopOf="parent"
             android:background="@color/primaryDarkColor"
             android:textColor="@color/backgroundColor"

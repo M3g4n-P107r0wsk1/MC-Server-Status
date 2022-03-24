@@ -29,7 +29,12 @@
     </item>
     <item
         android:id="@+id/signInMenuBar"
-        android:title="@string/account"
-        android:icon="@drawable/ic_baseline_account_circle_24">
+        android:title="@string/sign_in"
+        android:icon="@drawable/ic_baseline_login_24">
+    </item>
+    <item
+        android:id="@+id/signOutMenuBar"
+        android:title="@string/sign_out"
+        android:icon="@drawable/ic_baseline_logout_24">
     </item>
 </menu>

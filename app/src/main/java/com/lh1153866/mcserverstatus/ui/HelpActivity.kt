@@ -4,10 +4,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.text.HtmlCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.firebase.ui.auth.AuthUI
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.lh1153866.mcserverstatus.R
 import com.lh1153866.mcserverstatus.databinding.ActivityHelpBinding
 
@@ -15,11 +20,14 @@ class HelpActivity : AppCompatActivity() {
 
     lateinit var toggle : ActionBarDrawerToggle
     private lateinit var binding : ActivityHelpBinding
+    private lateinit var auth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHelpBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        auth = Firebase.auth // setup firebase auth
 
         /* **************************************************************************************************************
                                                         Navigation Drawer
@@ -33,6 +41,16 @@ class HelpActivity : AppCompatActivity() {
         toggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        // check if the user is signed in or not and show respective sign in/ out option
+        if (auth.currentUser == null) { // if the user is not signed in
+            navView.menu.getItem(6).isVisible = false // sign out is hidden
+            navView.menu.getItem(5).isVisible = true // sign in is shown
+        }
+        else { // if the user is signed in
+            navView.menu.getItem(5).isVisible = false // sign in is hidden
+            navView.menu.getItem(6).isVisible = true // sign out is shown
+        }
 
         navView.setNavigationItemSelectedListener { menuItem ->
             when(menuItem.itemId) { // check which menu item was selected and open activity
@@ -60,6 +78,14 @@ class HelpActivity : AppCompatActivity() {
                     startActivity(Intent(this, SignInActivity::class.java))
                     true
                 }
+                R.id.signOutMenuBar -> {
+                    AuthUI.getInstance().signOut(this).addOnSuccessListener {
+                        Toast.makeText(this,"Successfully signed out", Toast.LENGTH_LONG).show()
+                    }
+                    startActivity(Intent(this, this::class.java))
+                    finish()
+                    true
+                }
 
                 else -> {true}
             }
@@ -68,8 +94,8 @@ class HelpActivity : AppCompatActivity() {
         /* **************************************************************************************************************
                                                      App Help/ Tips
            ************************************************************************************************************** */
-        val startingTips = "<p>To use the app, first you need to go to the Server Status home page. From there you chose which version of Minecraft that the server is on, either \"Java\" for Minecraft java edition, or \"Bedrock\" for any other version of Minecraft. Once you have chose a version, simply put in the server's ip (and port if you are looking up a bedrock server) and press \"Go\" to find the status.</p> <p>If you would like to save a server to look up the status later, please create an account and click \"Add to My Servers\". Once you do this, you can go to \"My Servers\" when you are logged in and you will see any servers that you have saved</p>"
-        val keepInMind = "<p>These are a few things to be mindful of when using the app. Please do not contact the developer about these things, as they are already working on fixes for them, or are minor enough to be ignored.</p> <ul><li>A stable internet or wifi connection is required to use this app</li><li>Information will not load immediately and will take a few seconds to load</li><li>Server lookup information will only change once every <b>10 minutes</b> (this is so that the app and server can keep up with all the other people who also want to check server statuses)</li><li>Currently the bug report is in beta and is not going to be linked until it has been finished, please hang tight until it is done!</li></ul>"
+        val startingTips = "<p>To use the app, first you need to go to the Server Status home page.</p><p>From there you chose which version of Minecraft that the server is on, either \"Java\" for Minecraft java edition, or \"Bedrock\" for any other version of Minecraft.</p><p>Once you have chose a version, simply put in the server's ip (and port if you are looking up a bedrock server) and press \"Go\" to find the status.</p><br><p>If you would like to save a server to look up the status later, please create an account and click \"Add to My Servers\".</p> <p>Once you do this, you can go to \"My Servers\" when you are logged in and you will see any servers that you have saved.</p>"
+        val keepInMind = "<p>These are a few things to be mindful of when using the app. Please do not contact the developer about these things, as they are already working on fixes for them, or are minor enough to be ignored.</p><br><p>A stable internet or wifi connection is <b>required</b> to use this app</p><p>Information will not load immediately and will take a few seconds to load</p><p>Server lookup information will only change once every <b>10 minutes</b> (this is so that the app and server can keep up with all the other people who also want to check server statuses)</p><p>Currently the bug report is in beta and is not going to be linked until it has been finished, please hang tight until it is done!</p>"
 
         binding.startingTipsTextView.text = HtmlCompat.fromHtml(startingTips, HtmlCompat.FROM_HTML_MODE_LEGACY)
         binding.keepInMindTextView.text = HtmlCompat.fromHtml(keepInMind, HtmlCompat.FROM_HTML_MODE_LEGACY)
