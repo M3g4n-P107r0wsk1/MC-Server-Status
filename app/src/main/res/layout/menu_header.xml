@@ -11,6 +11,6 @@
         android:layout_height="130dp"
         android:layout_marginBottom="@dimen/spacing"
         android:layout_marginTop="@dimen/spacing"
-        android:background="@drawable/logo_colourbackground" />
+        android:background="@drawable/logo_dark_background" />
 
 </LinearLayout>

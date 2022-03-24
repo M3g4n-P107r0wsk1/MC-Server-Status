@@ -93,7 +93,6 @@
                         android:id="@+id/findStatusButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/secondaryColor"
                         android:text="@string/go"
                         android:textColor="@color/secondaryTextColor" />
                 </LinearLayout>
@@ -144,7 +143,6 @@
                         android:id="@+id/hypixelButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/secondaryColor"
                         android:text="@string/check_status"
                         android:textColor="@color/secondaryTextColor" />
                 </TableRow>
@@ -175,7 +173,6 @@
                         android:id="@+id/theHiveButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/secondaryColor"
                         android:text="@string/check_status"
                         android:textColor="@color/secondaryTextColor" />
                 </TableRow>
@@ -206,7 +203,6 @@
                         android:id="@+id/javaMineplexButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/secondaryColor"
                         android:text="@string/check_status"
                         android:textColor="@color/secondaryTextColor" />
                 </TableRow>
@@ -237,7 +233,6 @@
                         android:id="@+id/lifeboatButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/secondaryColor"
                         android:text="@string/check_status"
                         android:textColor="@color/secondaryTextColor" />
                 </TableRow>
@@ -268,7 +263,6 @@
                         android:id="@+id/uncensoredLibraryButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/secondaryColor"
                         android:text="@string/check_status"
                         android:textColor="@color/secondaryTextColor" />
                 </TableRow>
@@ -299,7 +293,6 @@
                         android:id="@+id/bedrockMineplexButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/secondaryColor"
                         android:text="@string/check_status"
                         android:textColor="@color/secondaryTextColor" />
                 </TableRow>

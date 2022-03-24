@@ -5,19 +5,41 @@
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
         <item name="colorOnPrimary">@color/primaryTextColor</item>
+
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/secondaryColor</item>
         <item name="colorSecondaryVariant">@color/secondaryDarkColor</item>
         <item name="colorOnSecondary">@color/secondaryTextColor</item>
+
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorSecondaryVariant</item>
-        <!-- Customize your theme here. -->
+
+        <!-- Button color -->
+        <item name="materialButtonStyle">@style/Widget.App.Button</item>
     </style>
-    <style name="Theme.MCServerStatus.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+
+    <!-- Thanks to Aadam for explaining how to alter FirebaseUI Styles (https://stackoverflow.com/questions/44492655/customize-firebase-ui-auth-android) -->
+    <style name="LoginTheme" parent="FirebaseUI">
+        <item name="android:windowBackground">@drawable/background_tile</item>
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
+        <item name="colorOnPrimary">@color/primaryTextColor</item>
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/secondaryColor</item>
+        <item name="colorSecondaryVariant">@color/secondaryDarkColor</item>
+        <item name="colorOnSecondary">@color/secondaryTextColor</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorSecondaryVariant</item>
+
+        <!-- Button color -->
+        <item name="materialButtonStyle">@style/Widget.App.Button</item>
     </style>
-    <style name="Theme.MCServerStatus.AppBarOverlay"
-        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-    <style name="Theme.MCServerStatus.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- Default global button color thanks to Gabriele Mariotti (https://stackoverflow.com/questions/64400433/android-default-button-color)-->
+    <style name="Widget.App.Button" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/secondaryColor</item>
+        <item name="android:textColor">@color/secondaryTextColor</item>
+    </style>
 </resources>

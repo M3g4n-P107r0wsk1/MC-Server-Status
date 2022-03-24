@@ -4,9 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.navigation.NavigationView
+import com.firebase.ui.auth.AuthUI
+import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
+import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
+import com.google.firebase.auth.FirebaseAuth
 import com.lh1153866.mcserverstatus.R
 import com.lh1153866.mcserverstatus.databinding.ActivitySigninBinding
 
@@ -15,56 +18,53 @@ class SignInActivity : AppCompatActivity() {
     lateinit var toggle : ActionBarDrawerToggle
     private lateinit var binding : ActivitySigninBinding
 
+    // See: https://developer.android.com/training/basics/intents/result
+    private val signInLauncher = registerForActivityResult( // signin launcher f
+        FirebaseAuthUIActivityResultContract()
+    ) { res ->
+        this.onSignInResult(res)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySigninBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        /* **************************************************************************************************************
-                                                        Navigation Drawer
-            Thanks to FoxAndroid for explaining how navigation drawers work (https://www.youtube.com/watch?v=zQh-QGGKPw0)
-           ************************************************************************************************************** */
-        val drawerLayout : DrawerLayout = binding.signInDrawer // container for the drawer and main content
-        val navView : NavigationView = binding.signInNavView // navigation menu in the activity
+        // Choose authentication providers
+        val providers = arrayListOf(
+            AuthUI.IdpConfig.EmailBuilder().build(),
+            AuthUI.IdpConfig.GoogleBuilder().build())
 
-        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
+        // Create and launch sign-in intent
+        val signInIntent = AuthUI.getInstance()
+            .createSignInIntentBuilder()
+            .setAvailableProviders(providers)
+            .setLogo(R.drawable.logo_light_background)
+            .setTheme(R.style.LoginTheme)
+            .build()
+        signInLauncher.launch(signInIntent)
+    }
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult) {
+        val response = result.idpResponse
+        if (result.resultCode == RESULT_OK) { // Sign in succeeded
+            val user = FirebaseAuth.getInstance().currentUser // get the new user
 
-        navView.setNavigationItemSelectedListener { menuItem ->
-            when(menuItem.itemId) { // check which menu item was selected and open activity
-                R.id.serverStatusMenuBar -> {
-                    startActivity(Intent(this, MainActivity::class.java))
-                    true
-                }
-                R.id.myServersMenuBar -> {
-                    startActivity(Intent(this, MyServersActivity::class.java))
-                    true
-                }
-                R.id.helpMenuBar -> {
-                    startActivity(Intent(this, HelpActivity::class.java))
-                    true
-                }
-                R.id.aboutMenuBar -> {
-                    startActivity(Intent(this, AboutAppActivity::class.java))
-                    true
-                }
-                R.id.bugReportMenuBar -> {
-                    startActivity(Intent(this, BugReportActivity::class.java))
-                    true
-                }
-                R.id.signInMenuBar -> {
-                    startActivity(Intent(this, SignInActivity::class.java))
-                    true
-                }
+            // pass new user to My Servers activity
+            val intent = Intent(this, MyServersActivity::class.java)
+            intent.putExtra("user", user)
+            startActivity(intent)
 
-                else -> {true}
-            }
+        } else { // Sign in failed
+            var intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("error", true) // set the sign in error tag to true
 
+            Toast.makeText(this, "Sign In Failed", Toast.LENGTH_LONG).show()
+
+            startActivity(intent)
         }
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)) {
             return true

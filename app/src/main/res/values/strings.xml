@@ -20,7 +20,9 @@
     <string name="status">Status</string>
     <string name="ip">IP</string>
     <string name="help">Help</string>
+    <string name="account">Account</string>
     <string name="sign_in">Sign in</string>
+    <string name="sign_out">Sign out</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="sign_in_with_google">Sign in with Google</string>
@@ -38,4 +40,6 @@
     <string name="the_hive_ip">The Hive</string>
     <string name="lifeboat_ip">LifeBoat</string>
     <string name="go">Go</string>
+    <string name="you_havent_saved_any_servers">You haven\'t saved any servers yet</string>
+    <string name="browse_popular_servers">Browse Popular Servers</string>
 </resources>
