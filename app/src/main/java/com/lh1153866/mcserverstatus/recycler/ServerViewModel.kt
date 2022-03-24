@@ -29,9 +29,12 @@ class ServerViewModel : ViewModel() {
                     val serverList = ArrayList<Server>()
 
                     for (d in documents) { // add all servers to arraylist
-                        Log.i("DB RESPONSE", "${d.data}")
+                        Log.i("DB Response", "${d.data}")
+
+                        // convert JSON document to Server object
                         val server = d.toObject(Server::class.java)
 
+                        // add new Server to list of servers
                         serverList.add(server)
                     }
 

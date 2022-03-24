@@ -14,6 +14,10 @@ import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 import com.lh1153866.mcserverstatus.R
 import com.lh1153866.mcserverstatus.models.Server
@@ -23,11 +27,15 @@ class ServerStatusActivity : AppCompatActivity() {
 
     lateinit var toggle : ActionBarDrawerToggle
     private lateinit var binding : ActivityServerStatusBinding
+    private lateinit var auth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityServerStatusBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        auth = Firebase.auth // setup firebase auth
+        var server = Server("","","","",null,false,null,0,"") // default server params
 
         /* **************************************************************************************************************
                                                         Navigation Drawer
@@ -43,7 +51,7 @@ class ServerStatusActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         navView.setNavigationItemSelectedListener { menuItem ->
-            when(menuItem.itemId) { // check which menu item was selected and open activity
+            when (menuItem.itemId) { // check which menu item was selected and open activity
                 R.id.serverStatusMenuBar -> {
                     startActivity(Intent(this, MainActivity::class.java))
                     true
@@ -69,9 +77,10 @@ class ServerStatusActivity : AppCompatActivity() {
                     true
                 }
 
-                else -> {true}
+                else -> {
+                    true
+                }
             }
-
         }
 
 
@@ -98,7 +107,7 @@ class ServerStatusActivity : AppCompatActivity() {
 
                         // use gson to parse json
                         val gson = Gson()
-                        var server = gson.fromJson(response.toString(), Server::class.java)
+                        server = gson.fromJson(response.toString(), Server::class.java)
 
                         binding.ipTextView.text = "%s".format(intent.getStringExtra("ip"))// show ip regardless if the server is online or offline
                         if (server.online) {
@@ -115,13 +124,13 @@ class ServerStatusActivity : AppCompatActivity() {
 
                             if (server.players != null) { // check if there is player data
                                 // show players online versus max players
-                                binding.playerCountTextView.text = "%d / %d".format(server.players!!.getOnlinePlayers(), server.players!!.getMaxPlayers())
+                                binding.playerCountTextView.text = "%d / %d".format(server.players!!.online, server.players!!.max)
                                 binding.playersTableRow.visibility = View.VISIBLE
 
                                 // show a list of the players online, if one exists
-                                if (!server.players!!.getPlayerList().isNullOrEmpty()) { // check that the player list is not null or empty
+                                if (!server.players!!.list.isNullOrEmpty()) { // check that the player list is not null or empty
                                     var playerList = ""
-                                    for(player in server.players!!.getPlayerList()!!) {
+                                    for(player in server.players!!.list!!) {
                                         playerList += "$player\n"
                                     }
                                     binding.playerListTableRow.visibility = View.VISIBLE
@@ -189,7 +198,7 @@ class ServerStatusActivity : AppCompatActivity() {
 
                         // use gson to parse json
                         val gson = Gson()
-                        var server = gson.fromJson(response.toString(), Server::class.java)
+                        server = gson.fromJson(response.toString(), Server::class.java)
 
                         binding.ipTextView.text = "%s:%s".format(intent.getStringExtra("ip"), intent.getStringExtra("port"))// show ip regardless if the server is online or offline
                         if (server.online) {
@@ -206,13 +215,13 @@ class ServerStatusActivity : AppCompatActivity() {
 
                             if (server.players != null) { // check if there is player data
                                 // show players online versus max players
-                                binding.playerCountTextView.text = "%d / %d".format(server.players!!.getOnlinePlayers(), server.players!!.getMaxPlayers())
+                                binding.playerCountTextView.text = "%d / %d".format(server.players!!.online, server.players!!.max)
                                 binding.playersTableRow.visibility = View.VISIBLE
 
                                 // show a list of the players online, if one exists
-                                if (!server.players!!.getPlayerList().isNullOrEmpty()) { // check that the player list is not null or empty
+                                if (!server.players!!.list.isNullOrEmpty()) { // check that the player list is not null or empty
                                     var playerList = ""
-                                    for(player in server.players!!.getPlayerList()!!) {
+                                    for(player in server.players!!.list!!) {
                                         playerList += "$player\n"
                                     }
                                     binding.playerListTableRow.visibility = View.VISIBLE
@@ -283,6 +292,69 @@ class ServerStatusActivity : AppCompatActivity() {
                 binding.playersTableRow.visibility = View.GONE
                 binding.playerListTableRow.visibility = View.GONE
                 binding.serverStatusErrorTableRow.visibility = View.VISIBLE
+            }
+        }
+
+
+        /* **************************************************************************************************************
+                                                        Write to Firebase
+           ************************************************************************************************************** */
+        binding.addToMyServersButton.setOnClickListener{
+            if (auth.currentUser != null) { // check if a user is signed in
+                if (binding.serverStatusError.text.isNullOrBlank() || binding.serverStatusErrorTableRow.visibility == View.GONE) { // if there are no errors
+                    // connect to firebase
+                    val firebaseDB = FirebaseFirestore.getInstance().collection("servers")
+
+                    // get the id from firebase
+                    val id = firebaseDB.document().getId()
+
+                    // the signed in user's id from firebase
+                    val uID = auth.currentUser!!.uid
+
+                    // server ip inputted by the user
+                    val ip = intent.getStringExtra("ip").toString()
+
+                    server.id = id // set the server id
+                    server.uID = uID // set the uID of the current user to the server value
+                    server.ip = ip // set the server ip the user entered
+                    server.edition = intent.getStringExtra("edition").toString() // set the server edition type
+
+                    // check if the user has already saved the server
+                    val firebaseItemSearch = FirebaseFirestore.getInstance().collection("servers")
+                        .whereEqualTo("uid", uID)
+                        .whereEqualTo("ip", ip)
+                        .whereEqualTo("port", server.port)
+
+                    firebaseItemSearch.get()
+                        .addOnSuccessListener{ document ->
+                            if (document.size() != 0) {
+                                Log.d("Server Saved","Server has already been saved: ${document}")
+                                Toast.makeText(this, "You have already saved this server", Toast.LENGTH_LONG).show()
+                            }
+                            else {
+                                // save to firebase db
+                                firebaseDB.document(id).set(server)
+                                    .addOnSuccessListener{
+                                        Toast.makeText(this, "Server ip saved to \"My Servers\"", Toast.LENGTH_LONG).show()
+                                        Log.d("DB Write", "DB successfully wrote")
+                                    }
+                                    .addOnFailureListener{ err ->
+                                        Toast.makeText(this, "Error saving to database, try again later", Toast.LENGTH_LONG).show()
+                                        Log.w("DB Error", "Error saving server to database: ${err.localizedMessage}")
+                                    }
+                            }
+                        }
+                        .addOnFailureListener{
+                            Toast.makeText(this, "Search Error! Please report this in the bug tracker", Toast.LENGTH_LONG).show()
+                        }
+                }
+                else { // if there was an error finding the status, do not let the user save the server
+                    Toast.makeText(this, "There was an error, please try again later", Toast.LENGTH_LONG).show()
+                }
+            }
+            else {
+                Toast.makeText(this, "You must be signed in to save servers", Toast.LENGTH_LONG).show()
+                startActivity(Intent(this, SignInActivity::class.java))
             }
         }
     }

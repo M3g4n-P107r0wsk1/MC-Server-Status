@@ -11,14 +11,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:padding="@dimen/spacing">
 
         <TextView
             android:id="@+id/serverIpTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="play.deathorglorysmp.tk"
-            android:layout_marginEnd="@dimen/spacing"/>
+            android:layout_marginEnd="@dimen/spacing"
+            android:layout_weight="1"/>
 
         <TextView
             android:id="@+id/serverEditionTextView"

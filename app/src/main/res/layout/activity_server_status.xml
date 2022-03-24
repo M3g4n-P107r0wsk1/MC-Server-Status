@@ -40,9 +40,9 @@
                 android:layout_height="wrap_content">
 
                 <TableRow
+                    android:id="@+id/serverStatusErrorTableRow"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/serverStatusErrorTableRow">
+                    android:layout_height="match_parent">
 
                     <TextView
                         android:id="@+id/serverStatusError"
@@ -51,8 +51,7 @@
                         android:layout_gravity="center_vertical"
                         android:text=""
                         android:layout_weight="1"
-                        android:textSize="@dimen/h2"
-                        android:visibility="gone"/>
+                        android:textSize="@dimen/h2" />
                 </TableRow>
 
                 <TableRow
@@ -195,7 +194,7 @@
             </TableLayout>
         </LinearLayout>
         <Button
-            android:id="@+id/addToMyServersStatusButton"
+            android:id="@+id/addToMyServersButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/add_to_my_servers"

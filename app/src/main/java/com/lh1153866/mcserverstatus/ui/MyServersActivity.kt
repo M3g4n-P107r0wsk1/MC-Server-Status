@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
@@ -16,9 +17,11 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.lh1153866.mcserverstatus.R
 import com.lh1153866.mcserverstatus.databinding.ActivityMyServersBinding
+import com.lh1153866.mcserverstatus.models.Server
+import com.lh1153866.mcserverstatus.recycler.ServerAdapter
 import com.lh1153866.mcserverstatus.recycler.ServerViewModel
 
-class MyServersActivity : AppCompatActivity() {
+class MyServersActivity : AppCompatActivity(), ServerAdapter.ServerItemListener {
 
     lateinit var toggle : ActionBarDrawerToggle
     private lateinit var binding : ActivityMyServersBinding
@@ -76,29 +79,30 @@ class MyServersActivity : AppCompatActivity() {
             }
         }
 
+
         /* **************************************************************************************************************
                                                             ViewModel
            ************************************************************************************************************** */
-        var serverAmount = 0 // number of servers the viewModel is storing
         val viewModel : ServerViewModel by viewModels()
 
         viewModel.getServers().observe(this, { serverList ->
-            for (server in serverList) {
-                Log.i("DB_Response", "server in data: $server")
-                serverAmount++
-            }
+            binding.myServersRecyclerView.adapter = ServerAdapter(this, serverList, this)
+            binding.myServersRecyclerView.removeAllViews() // remove any children in the recycler view
+
+            Log.d("ViewModel Server", "Servers in ViewModel: ${serverList.size}") // log # of servers in viewModel
         })
+
 
         /* **************************************************************************************************************
                                                        Firebase Auth/ User
            ************************************************************************************************************** */
         if (auth.currentUser == null) { // no user is signed in
-            // show error box
-            binding.errorLinearLayout.visibility = View.VISIBLE
-
             // set text on error textView and button
             binding.myServersErrorTextView.text = "You cannot save servers without signing in"
             binding.fixErrorButton.text = "Sign in"
+
+            // show error box
+            binding.errorLinearLayout.visibility = View.VISIBLE
 
             // create an onClickListener which sends the user to the sign in page
             binding.fixErrorButton.setOnClickListener {
@@ -106,13 +110,13 @@ class MyServersActivity : AppCompatActivity() {
             }
         }
         else { // if the user is signed in
-            if (serverAmount == 0) { // if the user is signed in but there are no servers saved
-                // show error box
-                binding.errorLinearLayout.visibility = View.VISIBLE
-
+            if (viewModel.getServers().value?.size == 0) { // if the user is signed in but there are no servers saved
                 // set text on error textView and button
                 binding.myServersErrorTextView.text = "You haven't saved any servers yet"
                 binding.fixErrorButton.text = "Browse Popular Servers"
+
+                // show error box
+                binding.errorLinearLayout.visibility = View.VISIBLE
 
                 // create an onClickListener which sends the user to the server status main page
                 binding.fixErrorButton.setOnClickListener {
@@ -123,12 +127,24 @@ class MyServersActivity : AppCompatActivity() {
                 binding.errorLinearLayout.visibility = View.GONE
             }
         }
-
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)) {
             return true
         }
         return false
+    }
+
+    override fun serverSelected(server: Server) {
+        var intent = Intent(this, ServerStatusActivity::class.java) // create an intent to go to the server status screen
+
+        intent.putExtra("edition", server.edition) // add edition to the intent
+        intent.putExtra("ip", server.ip) // add ip to the intent
+        if (server.port != 0) { // if there is a port to be passed, add it to the intent
+            intent.putExtra("port", server.port)
+        }
+
+        startActivity(intent)
+//        Toast.makeText(this, "Server was selected: ${server.ip}", Toast.LENGTH_LONG).show()
     }
 }
