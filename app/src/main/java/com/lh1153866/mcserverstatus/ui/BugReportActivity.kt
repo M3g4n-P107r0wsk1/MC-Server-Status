@@ -91,16 +91,6 @@ class BugReportActivity : AppCompatActivity() {
             }
         }
 
-
-        /* **************************************************************************************************************
-                                                Bug Reporting Guidelines/ Button
-           ************************************************************************************************************** */
-        val bugReportGuide = "Did you notice a bug with the app, but don't know how to effectively fill out a bug report? Here are some steps to follow if you are new to writing bug reports."
-        val bugReportGuide2 = "<p><b>Title</b>: briefly specify the problem that you faced</p><p><b>Environment</b>: ask yourself the following question \"what kind of device am I using the app on, and what operating system version is the device running?\"</p><p><b>Description</b>: give a brief explanation of what the bug does or what is it affecting</p><p><b>Steps to reproduce a Bug</b>: explain the steps leading up to when you experienced the bug or how to make the bug happen again</p><p><b>Expected Result</b>: what you expected to happen when you followed the above steps</p><p><b>Actual Result</b>: what actually happened when you followed the above steps</p><p><b>Visual Proof of Bug</b>: if you have any screenshots, videos, or text related to the bug include them with your report</p>"
-
-        binding.goodBugReportsTextView.text = HtmlCompat.fromHtml(bugReportGuide, HtmlCompat.FROM_HTML_MODE_LEGACY)
-        binding.goodBugReportsTextView2.text = HtmlCompat.fromHtml(bugReportGuide2, HtmlCompat.FROM_HTML_MODE_LEGACY)
-
         binding.bugReportWebsiteButton.setOnClickListener{ // send user to bug tracker JIRA board (not implemented yet)
             Toast.makeText(this, "Bug Tracker Website currently not available (WIP)", Toast.LENGTH_LONG).show()
         }

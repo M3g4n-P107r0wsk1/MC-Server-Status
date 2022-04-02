@@ -57,7 +57,8 @@
                 android:background="@color/backgroundColor"
                 android:ellipsize="none"
                 android:padding="@dimen/spacing"
-                android:textSize="@dimen/h3" />
+                android:textSize="@dimen/h3"
+                android:text="@string/help_starting_tips"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -85,7 +86,8 @@
                 android:background="@color/backgroundColor"
                 android:ellipsize="none"
                 android:padding="@dimen/spacing"
-                android:textSize="@dimen/h3" />
+                android:textSize="@dimen/h3"
+                android:text="@string/help_things_to_remember"/>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

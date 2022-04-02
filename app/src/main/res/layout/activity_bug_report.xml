@@ -70,7 +70,8 @@
                     android:background="@color/backgroundColor"
                     android:ellipsize="none"
                     android:padding="@dimen/spacing"
-                    android:textSize="@dimen/h3" />
+                    android:textSize="@dimen/h3"
+                    android:text="@string/bug_report_guide_1"/>
 
                 <TextView
                     android:id="@+id/goodBugReportsTextView2"
@@ -79,7 +80,8 @@
                     android:background="@color/backgroundColor"
                     android:ellipsize="none"
                     android:padding="@dimen/spacing"
-                    android:textSize="@dimen/h3" />
+                    android:textSize="@dimen/h3"
+                    android:text="@string/bug_report_guide_2"/>
 
                 <Button
                     android:id="@+id/bugReportWebsiteButton"

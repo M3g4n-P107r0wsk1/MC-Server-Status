@@ -202,6 +202,17 @@
             android:textColor="@color/secondaryTextColor"
             android:layout_marginTop="@dimen/spacing"
             app:layout_constraintTop_toBottomOf="@id/serverStatusLinearLayout"/>
+
+        <ProgressBar
+            android:id="@+id/serverStatusProgressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="@dimen/big_spacing"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- navigation menu -->
