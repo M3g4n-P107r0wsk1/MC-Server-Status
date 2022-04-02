@@ -1,7 +1,7 @@
 <h1>Serverus Craftus- The Minecraft Server Status Checking App</h1>
 <h3>CAUTION! CURRENTLY WIP!</h3>
 <h3>Created by: Megan Piotrowski</h3>
-<p>This app was created for our COMP 3025 class and is primarily written in Kotlin</p>
+<p>This app was created for our COMP 3025 class and is primarily written in Kotlin.</p>
 
 </br>
 
@@ -11,7 +11,8 @@
 <h3>External Resources</h3>
 <p>Thanks to all these lovely people for providing the necessary components to create our app!</p>
 <ul>
-	<li><a href="https://api.mcsrvstat.us/">Minecraft Server Status API created by: Anders G. Jørgensen</a></li>
-	<li><a href="https://minecraft.novaskin.me/skin/4454783534/">End Portal Frame Texture</a></li>
+	<li><a href="https://api.mcsrvstat.us/">Minecraft Server Status API created by Anders G. Jørgensen</a></li>
+	<li><a href="https://www.youtube.com/watch?v=zQh-QGGKPw0">Navigation Drawer Tutorial by FoxAndroid</a></li>
 	<li><a href="https://minecraft.novaskin.me/skin/4764734096/END-STONE-BY-ANESS">End Stone Texture</a></li>
+	<li><a href="https://logomakr.com/app/6WQIZo">Server Craftus logo created with Logomakr</a></li>
 </ul>
