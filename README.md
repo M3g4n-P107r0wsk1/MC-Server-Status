@@ -30,6 +30,6 @@
 
 <br />
 <h3>Privacy Policy</h3>
-<p>This app was developed as a class project. If you sign up for the app, your name, email address, and a hashed password will be stored in a database with no easy way to remove it.</p>
+<p>This app was developed as a class project. If you sign up for the app, your name, email address, and a hashed password will be stored in a database with no easy way to remove it. This app uses a third party API to get server information.</p>
 
 <p>Any information collected will not be passed on to any 3rd parties</p>
